@@ -44,7 +44,7 @@ const formSchema = z.object({
 });
 
 const CreateTaskForm = () => {
-  const { userId } = useAuth();
+  const { userId } = auth();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
