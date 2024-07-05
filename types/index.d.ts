@@ -1,10 +1,3 @@
-declare type CreateUserParams = {
-  clerkId: string;
-  firstName: string;
-  lastName: string;
-  photo: string;
-};
-
 export type CreateTaskProps = {
   clerkId: string | null;
   title: string;
