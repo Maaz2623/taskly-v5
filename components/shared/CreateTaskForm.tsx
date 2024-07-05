@@ -44,7 +44,7 @@ const formSchema = z.object({
 });
 
 const CreateTaskForm = () => {
-  const { userId } = auth();
+  const { userId } = useAuth();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,7 +59,7 @@ const CreateTaskForm = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await createTask(values);
+    const newTask = await createTask(values);
     form.reset({
       title: "",
       description: "",
