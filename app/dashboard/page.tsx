@@ -1,5 +1,4 @@
 import CreateTaskForm from "@/components/shared/CreateTaskForm";
-import Statistics from "@/components/shared/Statistics";
 import TasksContainer from "@/components/shared/TasksContainer";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
