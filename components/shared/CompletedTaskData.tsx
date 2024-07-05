@@ -39,8 +39,8 @@ const CompletedTaskData = ({
       <TableCell className=""><StatusPing isCompleted={isCompleted} /></TableCell>
       <TableCell className="">
         <Image
-          onClick={() => {
-            deleteTask(_id);
+          onClick={async () => {
+            await deleteTask(_id);
             toast({
               title: "Task deleted",
             });

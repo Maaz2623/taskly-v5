@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import CompletedTaskData from "./CompletedTaskData";
+import EmptyTasks from "./EmptyTasks";
 
 const TasksContainer = async () => {
   const { userId } = auth();
@@ -35,32 +36,32 @@ const TasksContainer = async () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="pending">
-            <Table className="">
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[200px]">Mark</TableHead>
-                  <TableHead className="w-[250px]">Title</TableHead>
-                  <TableHead className="w-[350px]">Description</TableHead>
-                  <TableHead className="w-[200px]">Priority</TableHead>
-                  <TableHead className="w-[200px]">Status</TableHead>
-                  <TableHead className="w-[100px]">Delete</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {pendingTasks.map((task: TaskProps) => (
-                  <PendingTaskData
-                    key={task._id}
-                    _id={task._id}
-                    title={task.title}
-                    description={task.description}
-                    isCompleted={task.isCompleted}
-                    isPending={task.isPending}
-                    priority={task.priority}
-                    isOutDated={task.isOutDated}
-                  />
-                ))}
-              </TableBody>
-            </Table>
+          <Table className="">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[200px]">Mark</TableHead>
+                <TableHead className="w-[250px]">Title</TableHead>
+                <TableHead className="w-[350px]">Description</TableHead>
+                <TableHead className="w-[200px]">Priority</TableHead>
+                <TableHead className="w-[200px]">Status</TableHead>
+                <TableHead className="w-[100px]">Delete</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {pendingTasks.map((task: TaskProps) => (
+                <PendingTaskData
+                  key={task._id}
+                  _id={task._id}
+                  title={task.title}
+                  description={task.description}
+                  isCompleted={task.isCompleted}
+                  isPending={task.isPending}
+                  priority={task.priority}
+                  isOutDated={task.isOutDated}
+                />
+              ))}
+            </TableBody>
+          </Table>
         </TabsContent>
         <TabsContent value="completed">
           <Table>
