@@ -15,7 +15,7 @@ export const createTask = async (values: CreateTaskProps) => {
       priority: values.priority,
       clerkId: values.clerkId,
     });
-    revalidatePath("/");
+    revalidatePath("/dashboard");
     return JSON.parse(JSON.stringify({ message: "Ok", newTask }));
   } catch (error) {
     handleError(error);
@@ -58,7 +58,7 @@ export const markComplete = async (id: string) => {
       { isCompleted: true, isPending: false },
       { new: true } // To return the updated document
     );
-    revalidatePath("/");
+    revalidatePath("/dashboard");
   } catch (error) {
     handleError(error);
   }
@@ -72,7 +72,7 @@ export const markIncomplete = async (id: string) => {
       { isCompleted: false, isPending: true },
       { new: true } // To return the updated document
     );
-    revalidatePath("/");
+    revalidatePath("/dashboard");
   } catch (error) {
     handleError(error);
   }
@@ -82,7 +82,7 @@ export const deleteTask = async (id: string) => {
   try {
     await connectToDatabase();
     const toDeleteTask = await Task.findByIdAndDelete(id);
-    revalidatePath("/");
+    revalidatePath("/dashboard");
   } catch (error) {
     handleError(error);
   }
