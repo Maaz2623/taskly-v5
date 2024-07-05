@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,10 +27,11 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
-        <body className={inter.className}>
+      <html lang="en" className="px-10 pt-5">
+        <body className={`${inter.className}`}>
           <ThemeProvider defaultTheme="dark" attribute="class">
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

@@ -5,14 +5,15 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const DashboardPage = () => {
+  const { userId } = auth();
 
-  const {userId} = auth()
-
-  if(!userId) redirect('/sign-in')
+  if (!userId) redirect("/sign-in");
 
   return (
-    <div>
-      <CreateTaskForm />
+    <div className="flex flex-col gap-5">
+      <div>
+        <CreateTaskForm />
+      </div>
       <TasksContainer />
     </div>
   );

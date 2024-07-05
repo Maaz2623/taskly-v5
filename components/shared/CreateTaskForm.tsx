@@ -35,6 +35,7 @@ import {
 import { createTask } from "@/lib/actions/task.action";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { useAuth } from "@clerk/nextjs";
+import { useToast } from "../ui/use-toast";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
@@ -45,6 +46,8 @@ const formSchema = z.object({
 
 const CreateTaskForm = () => {
   const { userId } = useAuth();
+
+  const {toast} = useToast()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,6 +63,10 @@ const CreateTaskForm = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const newTask = await createTask(values);
+    toast({
+      title: 'Task Created',
+      description: `Title: ${values.title}`
+    })
     form.reset({
       title: "",
       description: "",
@@ -73,7 +80,7 @@ const CreateTaskForm = () => {
     <div>
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline">Create Task</Button>
+          <Button className="rounded-sm">Create Task</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

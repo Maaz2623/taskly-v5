@@ -24,45 +24,49 @@ const TasksContainer = async () => {
   const completedTasks = await getUserCompletedTasks(userId);
 
   return (
-    <div>
-      <Tabs defaultValue="pending" className="">
-        <TabsList className="">
-          <TabsTrigger value="pending">Pending</TabsTrigger>
-          <TabsTrigger value="completed">Completed</TabsTrigger>
+    <div className="">
+      <Tabs defaultValue="pending" className="bg-background">
+        <TabsList className="w-full">
+          <TabsTrigger className="w-full " value="pending">
+            Pending
+          </TabsTrigger>
+          <TabsTrigger className="w-full " value="completed">
+            Completed
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="pending">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[200px]">Action</TableHead>
-                <TableHead className="w-[250px]">Title</TableHead>
-                <TableHead className="w-[350px]">Description</TableHead>
-                <TableHead className="w-[200px]">Priority</TableHead>
-                <TableHead className="w-[200px]">Status</TableHead>
-                <TableHead className="w-[100px]">Delete</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {pendingTasks.map((task: TaskProps) => (
-                <PendingTaskData
-                  key={task._id}
-                  _id={task._id}
-                  title={task.title}
-                  description={task.description}
-                  isCompleted={task.isCompleted}
-                  isPending={task.isPending}
-                  priority={task.priority}
-                  isOutDated={task.isOutDated}
-                />
-              ))}
-            </TableBody>
-          </Table>
+            <Table className="">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[200px]">Mark</TableHead>
+                  <TableHead className="w-[250px]">Title</TableHead>
+                  <TableHead className="w-[350px]">Description</TableHead>
+                  <TableHead className="w-[200px]">Priority</TableHead>
+                  <TableHead className="w-[200px]">Status</TableHead>
+                  <TableHead className="w-[100px]">Delete</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {pendingTasks.map((task: TaskProps) => (
+                  <PendingTaskData
+                    key={task._id}
+                    _id={task._id}
+                    title={task.title}
+                    description={task.description}
+                    isCompleted={task.isCompleted}
+                    isPending={task.isPending}
+                    priority={task.priority}
+                    isOutDated={task.isOutDated}
+                  />
+                ))}
+              </TableBody>
+            </Table>
         </TabsContent>
         <TabsContent value="completed">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[200px]">Action</TableHead>
+                <TableHead className="w-[200px]">Mark</TableHead>
                 <TableHead className="w-[250px]">Title</TableHead>
                 <TableHead className="w-[350px]">Description</TableHead>
                 <TableHead className="w-[200px]">Priority</TableHead>

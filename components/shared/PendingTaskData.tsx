@@ -14,6 +14,8 @@ import CustomCheckbox from "./CustomCheckbox";
 import Image from "next/image";
 import { deleteTask } from "@/lib/actions/task.action";
 import { toast, useToast } from "../ui/use-toast";
+import StatusPing from "./StatusPing";
+import PriorityLabel from "./PriorityLabel";
 
 const PendingTaskData = ({
   _id,
@@ -32,8 +34,8 @@ const PendingTaskData = ({
       </TableCell>
       <TableCell>{title}</TableCell>
       <TableCell>{description}</TableCell>
-      <TableCell className="">{priority}</TableCell>
-      <TableCell className="">status</TableCell>
+      <TableCell className=""><PriorityLabel label={priority} /></TableCell>
+      <TableCell className=""><StatusPing isCompleted={isCompleted} /></TableCell>
       <TableCell className="">
         <Image
           onClick={() => {
