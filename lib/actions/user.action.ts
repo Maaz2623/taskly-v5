@@ -6,6 +6,7 @@ import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
 import { stringify } from "querystring";
+import { CreateUserParams } from "@/types";
 
 // Create
 export async function createUser(user: CreateUserParams) {
