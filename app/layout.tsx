@@ -23,12 +23,12 @@ export default function RootLayout({
       appearance={{
         baseTheme: dark,
         variables: {
-          colorPrimary: "#F28FE8",
+          colorPrimary: "#A8B6EB",
         },
       }}
     >
       <html lang="en" className="px-10 pt-5">
-        <body className={`${inter.className}`}>
+        <body className={`${inter.className} antialiased`}>
           <ThemeProvider defaultTheme="dark" attribute="class">
             {children}
             <Toaster />
