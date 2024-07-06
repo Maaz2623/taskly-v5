@@ -27,7 +27,7 @@ const HomePage = () => {
     <>
       <BackgroundBeams className="-z-10" />
       <Navbar />
-      <div className="py-20 mt-10 flex flex-col justify-center items-center pt-10">
+      <div className="py-20 mt-14 flex flex-col justify-center items-center pt-10">
         <TypewriterEffectSmooth words={words} className="text-2xl" />
         <div className="text-center px-40">
           <TextGenerateEffect words={paragraphWords} />
