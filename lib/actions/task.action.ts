@@ -94,17 +94,3 @@ export const deleteTask = async (id: string) => {
     handleError(error);
   }
 };
-
-export async function getAllPendingTasks() {
-  try {
-    await connectToDatabase();
-    const pendingTasks: TaskProps[] = await Task.find({
-      isPending: true,
-    }).lean();
-    if (pendingTasks.length > 0) {
-      return pendingTasks;
-    }
-  } catch (error) {
-    handleError(error);
-  }
-}

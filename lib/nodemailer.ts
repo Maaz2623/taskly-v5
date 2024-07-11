@@ -2,7 +2,7 @@
 
 import nodemailer from "nodemailer";
 import Task from "./database/models/task.model";
-import { TaskProps } from "@/types";
+import { cronJobTaskProps, TaskProps } from "@/types";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -30,8 +30,8 @@ export const sendEmail = async (to: string, subject: string, text: string) => {
 
 export const sendPendingTaskEmails = async () => {
   const pendingTasks = await Task.find({ isPending: true });
-  const taskTitle = pendingTasks.map((task: TaskProps) => task.title);
-  const emails = pendingTasks.map((task: TaskProps) => task.email);
+  const taskTitle = pendingTasks.map((task: cronJobTaskProps) => task.title);
+  const emails = pendingTasks.map((task: cronJobTaskProps) => task.email);
   console.log("I'm here");
   await Promise.all(
     emails.map(async (email) => {

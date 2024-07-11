@@ -3,6 +3,7 @@ export type CreateTaskProps = {
   title: string;
   description: string;
   priority: string;
+  email: string
 };
 
 export type TaskProps = {
@@ -13,5 +14,16 @@ export type TaskProps = {
   isCompleted: boolean;
   isOutDated: boolean;
   _id: string;
-  email?: string
+};
+
+
+export type cronJobTaskProps = {
+  title: string;
+  description: string;
+  priority: string;
+  isPending: boolean;
+  isCompleted: boolean;
+  isOutDated: boolean;
+  _id: string;
+  email: string
 };
