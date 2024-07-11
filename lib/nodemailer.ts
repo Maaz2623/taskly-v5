@@ -30,17 +30,30 @@ export const sendEmail = async (to: string, subject: string, text: string) => {
 };
 
 export const sendPendingTaskEmails = async () => {
-  await connectToDatabase()
-  const pendingTasks = await Task.find({ isPending: true });
-  const taskTitle = pendingTasks.map((task: cronJobTaskProps) => task.title);
-  const emails = pendingTasks.map((task: cronJobTaskProps) => task.email);
-  console.log("I'm here");
-  await Promise.all(
-    emails.map(async (email) => {
-      // Assuming you have user email associated with the task
-      const subject = "Pending Task Reminder";
-      const text = `You have a pending task: ${taskTitle}. Please complete it soon.`;
-      sendEmail(email, subject, text);
-    })
-  );
+  try {
+    await connectToDatabase(); // Connect to your database
+    const pendingTasks = await Task.find({ isPending: true });
+
+    const uniqueEmailsSet: any = new Set();
+
+    // Collect unique emails and task titles
+    pendingTasks.forEach((task) => {
+      uniqueEmailsSet.add(task.email);
+    });
+
+    const uniqueEmails: string[] = Array.from(uniqueEmailsSet);
+
+    await Promise.all(
+      uniqueEmails.map(async (uniqueEmail) => {
+        const subject = "Pending Task Reminder";
+        const text = `You have pending tasks in your Taskly list, please complete them soon.`;
+        await sendEmail(uniqueEmail, subject, text);
+      })
+    );
+
+    return { message: `Emails sent to: ${uniqueEmails.join(", ")}` };
+  } catch (error) {
+    console.error("Error sending pending task emails:", error);
+    throw error; // Rethrow the error to be handled elsewhere
+  }
 };

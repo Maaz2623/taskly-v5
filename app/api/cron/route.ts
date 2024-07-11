@@ -1,8 +1,6 @@
-import { sendPendingTaskEmails } from '@/lib/nodemailer';
-import { NextResponse } from 'next/server';
+import { sendPendingTaskEmails } from "@/lib/nodemailer";
 
 export async function GET() {
-    await sendPendingTaskEmails()
-    console.log("Emails Sent")
-  return NextResponse.json({ ok: true });
+  const res = await sendPendingTaskEmails();
+  return Response.json(res.message);
 }
