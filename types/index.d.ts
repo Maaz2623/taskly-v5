@@ -3,7 +3,6 @@ export type CreateTaskProps = {
   title: string;
   description: string;
   priority: string;
-  email: string
 };
 
 export type TaskProps = {
