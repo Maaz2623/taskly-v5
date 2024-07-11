@@ -3,6 +3,7 @@
 import nodemailer from "nodemailer";
 import Task from "./database/models/task.model";
 import { cronJobTaskProps, TaskProps } from "@/types";
+import { connectToDatabase } from "./database/mongoose";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -29,6 +30,7 @@ export const sendEmail = async (to: string, subject: string, text: string) => {
 };
 
 export const sendPendingTaskEmails = async () => {
+  await connectToDatabase()
   const pendingTasks = await Task.find({ isPending: true });
   const taskTitle = pendingTasks.map((task: cronJobTaskProps) => task.title);
   const emails = pendingTasks.map((task: cronJobTaskProps) => task.email);
