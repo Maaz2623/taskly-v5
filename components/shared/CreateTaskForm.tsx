@@ -47,7 +47,10 @@ const formSchema = z.object({
 const CreateTaskForm = () => {
   const { userId } = useAuth();
 
+
   const {toast} = useToast()
+  
+
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -73,7 +76,7 @@ const CreateTaskForm = () => {
       priority: "High",
       clerkId: userId,
     });
-    console.log(values);
+    // console.log(values);
   }
 
   return (

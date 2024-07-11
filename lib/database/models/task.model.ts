@@ -9,6 +9,10 @@ const taskSchema = new Schema({
     clerkId: {
         type: String
     },
+    email: {
+        type: String,
+        required: true
+    },
     title: String,
     description: String,
     priority: String,

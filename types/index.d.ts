@@ -13,4 +13,5 @@ export type TaskProps = {
   isCompleted: boolean;
   isOutDated: boolean;
   _id: string;
+  email: string
 };
