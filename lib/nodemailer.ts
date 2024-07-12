@@ -51,7 +51,7 @@ export const sendPendingTaskEmails = async () => {
       })
     );
 
-    return { message: `Emails sent to: ${uniqueEmails.join(", ")}` };
+    return { message: `Emails sent to: ${uniqueEmails.join(", ")}`, status: 1 };
   } catch (error) {
     console.error("Error sending pending task emails:", error);
     throw error; // Rethrow the error to be handled elsewhere
